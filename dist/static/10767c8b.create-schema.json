@@ -1,0 +1,191 @@
+[
+  {
+    "fields": [
+      {
+        "initialValue": true,
+        "name": "active",
+        "type": "boolean",
+        "title": "¿Activo?"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Tour",
+              "value": "tour"
+            },
+            {
+              "title": "Concierto",
+              "value": "concert"
+            }
+          ],
+          "layout": "radio"
+        },
+        "name": "type",
+        "type": "string",
+        "title": "Tipo de Viaje"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Nombre del Viaje"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "message": "El enlace es obligatorio para que la página funcione."
+          }
+        ],
+        "description": "Haz clic en Generate para crear el enlace automático basado en el nombre.",
+        "name": "slug",
+        "type": "slug",
+        "title": "Enlace Permanente (Slug)"
+      },
+      {
+        "name": "price",
+        "type": "string",
+        "title": "Precio"
+      },
+      {
+        "name": "fechaViaje",
+        "type": "string",
+        "title": "Fecha del Viaje (Ej: 15 de Mayo, 2024)"
+      },
+      {
+        "name": "horaSalida",
+        "type": "string",
+        "title": "Hora de Salida (Ej: 05:00 AM)"
+      },
+      {
+        "name": "puntoPartida",
+        "type": "string",
+        "title": "Puntos de Abordaje"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Imagen Principal (Alta Calidad)"
+      },
+      {
+        "name": "tagline_es",
+        "type": "string",
+        "title": "Frase Corta (ES)"
+      },
+      {
+        "name": "duracion_es",
+        "type": "string",
+        "title": "Duración (ES) - Ej: Todo el día"
+      },
+      {
+        "name": "dificultad_es",
+        "type": "string",
+        "title": "Dificultad (ES) - Ej: Moderada"
+      },
+      {
+        "name": "fullDesc_es",
+        "type": "text",
+        "title": "Descripción Larga (ES)"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "hora",
+                "type": "string"
+              },
+              {
+                "name": "actividad",
+                "type": "string"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "itinerario_es",
+        "type": "array",
+        "title": "Itinerario (ES)"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "incluye_es",
+        "type": "array",
+        "title": "¿Qué incluye? (ES)"
+      },
+      {
+        "name": "tagline_en",
+        "type": "string",
+        "title": "Frase Corta (EN)"
+      },
+      {
+        "name": "duracion_en",
+        "type": "string",
+        "title": "Duración (EN)"
+      },
+      {
+        "name": "dificultad_en",
+        "type": "string",
+        "title": "Difficulty (EN)"
+      },
+      {
+        "name": "fullDesc_en",
+        "type": "text",
+        "title": "Full Description (EN)"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "hora",
+                "type": "string"
+              },
+              {
+                "name": "actividad",
+                "type": "string"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "itinerario_en",
+        "type": "array",
+        "title": "Itinerary (EN)"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "incluye_en",
+        "type": "array",
+        "title": "Included (EN)"
+      }
+    ],
+    "name": "viaje",
+    "type": "document",
+    "title": "Catálogo de Viajes"
+  }
+]
