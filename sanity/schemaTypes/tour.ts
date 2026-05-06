@@ -3,77 +3,79 @@ export const tourType = {
   title: 'Catálogo de Viajes',
   type: 'document',
   fields: [
-    {
-      name: 'active',
-      title: '¿Tour Activo?',
-      description: 'Apágalo si el tour ya pasó de fecha para ocultarlo de la página principal sin borrarlo.',
-      type: 'boolean',
-      initialValue: true,
-    },
+    { name: 'active', title: '¿Activo?', type: 'boolean', initialValue: true },
     {
       name: 'type',
       title: 'Tipo de Viaje',
       type: 'string',
-      options: {
+      options: { 
         list: [
-          { title: 'Tour de Naturaleza/Ciudad', value: 'tour' },
-          { title: 'Viaje a Concierto', value: 'concert' }
-        ],
-        layout: 'radio'
+          { title: 'Tour', value: 'tour' }, 
+          { title: 'Concierto', value: 'concert' }
+        ], 
+        layout: 'radio' 
       }
     },
+    { name: 'title', title: 'Nombre del Viaje', type: 'string' },
+    
+    // ── CAMPO SLUG AÑADIDO ────────────────────────────────
     {
-      name: 'title',
-      title: 'Nombre del Tour o Concierto',
-      type: 'string',
-    },
-    {
-      name: 'price',
-      title: 'Precio (Ej: $35 o C$1500)',
-      type: 'string',
-    },
-    {
-      name: 'puntoPartida',
-      title: 'Lugar de Salida / Puntos de Abordaje',
-      type: 'string',
-    },
-    {
-      name: 'image',
-      title: 'Imagen Principal',
-      type: 'image',
+      name: 'slug',
+      title: 'Enlace Permanente (Slug)',
+      type: 'slug',
+      description: 'Haz clic en Generate para crear el enlace automático basado en el nombre.',
       options: {
-        hotspot: true, // Le permite al cliente recortar la imagen visualmente
-      }
+        source: 'title', // Toma el valor del campo 'title'
+        maxLength: 96,
+      },
+      validation: (Rule: any) => Rule.required().error('El enlace es obligatorio para que la página funcione.'),
     },
-    // --- SECCIÓN BILINGÜE ---
+    // ──────────────────────────────────────────────────────
+
+    { name: 'price', title: 'Precio', type: 'string' },
+    { name: 'fechaViaje', title: 'Fecha del Viaje (Ej: 15 de Mayo, 2024)', type: 'string' },
+    { name: 'horaSalida', title: 'Hora de Salida (Ej: 05:00 AM)', type: 'string' },
+    { name: 'puntoPartida', title: 'Puntos de Abordaje', type: 'string' },
+    { name: 'image', title: 'Imagen Principal (Alta Calidad)', type: 'image', options: { hotspot: true } },
+    
+    // --- ESPAÑOL ---
+    { name: 'tagline_es', title: 'Frase Corta (ES)', type: 'string', group: 'espanol' },
+    { name: 'duracion_es', title: 'Duración (ES) - Ej: Todo el día', type: 'string', group: 'espanol' },
+    { name: 'dificultad_es', title: 'Dificultad (ES) - Ej: Moderada', type: 'string', group: 'espanol' },
+    { name: 'fullDesc_es', title: 'Descripción Larga (ES)', type: 'text', group: 'espanol' },
     {
-      name: 'tagline_es',
-      title: 'Frase llamativa (Español)',
-      type: 'string',
+      name: 'itinerario_es',
+      title: 'Itinerario (ES)',
+      type: 'array',
       group: 'espanol',
+      of: [{ type: 'object', fields: [{ name: 'hora', type: 'string' }, { name: 'actividad', type: 'string' }] }]
     },
+    { name: 'incluye_es', title: '¿Qué incluye? (ES)', type: 'array', group: 'espanol', of: [{ type: 'string' }] },
+
+    // --- INGLÉS ---
+    { name: 'tagline_en', title: 'Frase Corta (EN)', type: 'string', group: 'ingles' },
+    { name: 'duracion_en', title: 'Duración (EN)', type: 'string', group: 'ingles' },
+    { name: 'dificultad_en', title: 'Difficulty (EN)', type: 'string', group: 'ingles' },
+    { name: 'fullDesc_en', title: 'Full Description (EN)', type: 'text', group: 'ingles' },
     {
-      name: 'tagline_en',
-      title: 'Frase llamativa (Inglés)',
-      type: 'string',
+      name: 'itinerario_en',
+      title: 'Itinerary (EN)',
+      type: 'array',
       group: 'ingles',
+      of: [{ type: 'object', fields: [{ name: 'hora', type: 'string' }, { name: 'actividad', type: 'string' }] }]
     },
-    {
-      name: 'fullDesc_es',
-      title: 'Descripción completa (Español)',
-      type: 'text',
-      group: 'espanol',
-    },
-    {
-      name: 'fullDesc_en',
-      title: 'Descripción completa (Inglés)',
-      type: 'text',
-      group: 'ingles',
-    },
+    { name: 'incluye_en', title: 'Included (EN)', type: 'array', group: 'ingles', of: [{ type: 'string' }] },
   ],
-  // Esto crea pestañas en el panel para separar idiomas y que se vea más ordenado
   groups: [
-    { name: 'espanol', title: 'ESP 🇳🇮' },
-    { name: 'ingles', title: 'ENG 🇺🇸' },
-  ]
+    { name: 'espanol', title: 'Español' }, 
+    { name: 'ingles', title: 'English' }
+  ],
+  // Esto arregla lo de "Untitled" en la barra lateral
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'price',
+      media: 'image'
+    }
+  }
 }
