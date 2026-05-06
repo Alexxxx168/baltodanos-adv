@@ -11,7 +11,8 @@ import {
   Plane,
   Globe,
   Users, 
-  Hotel
+  Hotel,
+  Calendar
 } from 'lucide-react';
 
 // ── 1. CONFIGURACIÓN DE SANITY ──────────────────────────────────
@@ -142,7 +143,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* SECCIÓN DE TOURS */}
+     {/* SECCIÓN DE TOURS */}
       <section id="tours" className="py-20 px-4 max-w-6xl mx-auto">
         <div className="flex items-center gap-2 mb-10 text-green-600">
           <Compass className="animate-pulse" />
@@ -173,10 +174,21 @@ export default function LandingPage() {
                 </div>
 
                 <div className="p-6 grow flex flex-col">
-                  <h3 className="text-2xl font-bold mb-2 text-slate-800 uppercase italic font-black">{tour.title}</h3>
-                  <div className="flex items-center gap-1 text-slate-500 text-xs mb-3 uppercase font-semibold">
-                    <MapPin size={14} /> {tour.puntoPartida}
+                  <h3 className="text-2xl font-bold mb-4 text-slate-800 uppercase italic font-black">{tour.title}</h3>
+                  
+                  {/* --- NUEVO BLOQUE DE DETALLES: FECHA Y LUGAR --- */}
+                  <div className="flex flex-col gap-2 mb-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                    <div className="flex items-center gap-2 text-slate-600 text-xs uppercase font-bold">
+                      <Calendar size={14} className="text-green-500" /> 
+                      {tour.fechaViaje || (lang === 'es' ? 'Próximamente' : 'Coming soon')}
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-600 text-xs uppercase font-bold">
+                      <MapPin size={14} className="text-green-500" /> 
+                      {tour.puntoPartida}
+                    </div>
                   </div>
+                  {/* ----------------------------------------------- */}
+
                   <p className="text-slate-600 text-sm mb-6 grow leading-relaxed">
                     {lang === 'es' ? (tour.fullDesc_es || tour.tagline_es) : (tour.fullDesc_en || tour.tagline_en)}
                   </p>
@@ -202,7 +214,6 @@ export default function LandingPage() {
           </div>
         )}
       </section>
-
       {/* SECCIÓN DE FLOTA PRIVADA */}
       <section id="flota" className="py-20 px-4 max-w-6xl mx-auto border-t border-slate-200">
         <div className="text-center mb-12">
