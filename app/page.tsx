@@ -301,7 +301,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="flex md:justify-end gap-6 font-bold text-white">
-            <a href="#" className="hover:text-green-500 transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/baltodanos_adventure/?utm_source=ig_web_button_share_sheet" className="hover:text-green-500 transition-colors">Instagram</a>
             <a href="https://www.facebook.com/profile.php?id=61558101334163" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">Facebook</a>
           </div>
         </div>
