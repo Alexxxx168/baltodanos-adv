@@ -45,7 +45,9 @@ const dict = {
     capacity: "Capacidad",
     pax: "pasajeros",
     footerDesc: "Basados en Diriamba, Carazo. Expertos en crear memorias inolvidables.",
-    rights: "Todos los derechos reservados."
+    rights: "Todos los derechos reservados.",
+    aboutTitle: "Quiénes Somos",
+    aboutDesc: "Somos una empresa nicaragüense dedicada a ofrecer experiencias de viaje inolvidables. Nos especializamos en transporte seguro, tours personalizados y aventuras que te conectan con la belleza de nuestro país. Nuestra misión es garantizar tu comodidad y seguridad en cada kilómetro recorrido.",
   },
   en: {
     heroSubtitle: "Travel fast and safe with us!",
@@ -62,9 +64,26 @@ const dict = {
     capacity: "Capacity",
     pax: "passengers",
     footerDesc: "Based in Diriamba, Carazo. Experts in creating unforgettable memories.",
-    rights: "All rights reserved."
+    rights: "All rights reserved.",
+    aboutTitle: "About Us",
+    aboutDesc: "We are a Nicaraguan company dedicated to offering unforgettable travel experiences. We specialize in safe transportation, personalized tours, and adventures that connect you with the beauty of our country. Our mission is to ensure your comfort and safety in every kilometer traveled.",
   }
 };
+
+// ── COMPONENTES DE REDES SOCIALES (Ya que Lucide los eliminó) ──
+const FacebookIcon = ({ size = 24, className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
+const InstagramIcon = ({ size = 24, className = "" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
 
 export default function LandingPage() {
   const [lang, setLang] = useState<'es' | 'en'>('es');
@@ -142,6 +161,53 @@ export default function LandingPage() {
           </div>
         </div>
       </header>
+      {/* SECCIÓN QUIÉNES SOMOS / ABOUT US */}
+      <section id="about" className="py-20 px-4 max-w-5xl mx-auto">
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 flex flex-col md:flex-row items-center p-8 md:p-12 gap-10">
+          
+          {/* Logo / Imagen */}
+          <div className="w-full md:w-1/3 flex justify-center shrink-0">
+            <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-2xl border-4 border-green-500 bg-slate-100 flex items-center justify-center">
+              <img 
+                src= "https://i.postimg.cc/3xYc5f41/IMG-20260526-WA0000.jpg" 
+                alt="Baltodano's Adventure Logo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Textos y Redes */}
+          <div className="w-full md:w-2/3 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase italic font-black mb-4">
+              {t.aboutTitle}
+            </h2>
+            <p className="text-slate-600 text-lg leading-relaxed mb-8">
+              {t.aboutDesc}
+            </p>
+{/* Redes Sociales: Solo Facebook e Instagram */}
+            <div className="flex justify-center md:justify-start gap-6">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61558101334163" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white px-5 py-2.5 rounded-xl font-bold transition-all"
+              >
+                <FacebookIcon size={20} /> {/* <--- Cambiado aquí */}
+                Facebook
+              </a>
+              <a 
+                href="https://www.instagram.com/baltodanos_adventure/?utm_source=ig_web_button_share_sheet" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2 bg-[#E1306C]/10 text-[#E1306C] hover:bg-[#E1306C] hover:text-white px-5 py-2.5 rounded-xl font-bold transition-all"
+              >
+                <InstagramIcon size={20} /> {/* <--- Cambiado aquí */}
+                Instagram
+              </a>
+            </div>
+         </div>
+        </div>
+      </section>
 
      {/* SECCIÓN DE TOURS */}
       <section id="tours" className="py-20 px-4 max-w-6xl mx-auto">
